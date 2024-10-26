@@ -1,0 +1,30 @@
+---
+version: "3.8"
+name: sample_cycle
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    ports:
+      - 15432:5432
+    expose:
+      - "15432"
+    volumes:
+      - ./.data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+  
+  mongodb:
+    container_name: mongodb
+    image: mongo:6.0
+    ports:
+      - 27117:27017
+    expose:
+      - "27117"
+    volumes:
+      - ./.data/mongodb:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongouser
+      - MONGO_INITDB_ROOT_PASSWORD=mongopass
