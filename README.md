@@ -13,9 +13,8 @@ $ terraform apply
 
 ```sh
 # kubernates spin-up > .bash/
-$ bash .bash/bootstrap-kubernates.sh
-$ bash .bash/bootstrap-monitoring.sh
-$ bash .bash/uninstall-kubernates.sh
+$ bash ./.bash/bootstrap-minikube.sh
+$ bash ./.bash/teardown-minikube.sh
 ```
 
 ```sh
