@@ -21,7 +21,7 @@ $ bash ./.bash/teardown-minikube.sh
 # argocd spin-up > .bash/
 $ bash bootstrap-argocd.sh
 $ bash deploy-app-charts.sh
-$ bash uninstall-argocd.sh
+$ bash teardown-argocd.sh
 ```
 
 ```sh
@@ -35,4 +35,10 @@ helm upgrade --install my-test-app-release . --namespace=local --debug --dry-run
 # happy path 
 $ bash .bash/bootstrap-kubernates.sh
 $ bash .bash/bootstrap-monitoring.sh
+```
+
+```sh
+# local dns 
+127.0.0.1	kubernetes.dashboard.domain.com
+127.0.0.1	argocd.domain.com
 ```

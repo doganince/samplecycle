@@ -19,10 +19,9 @@ else
 fi
 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd
 
-if ! kubectl get ing argocd-server-ingress --namespace=argocd
-then
-    kubectl create -n argocd -f '.cd/root/templates/argocd-ingress.yaml'
+kubectl create -n argocd -f 'ci-cd/charts/argo-cd/ingress.yaml'
     printf "🏊  argo-cd ingress installed\n"
 else
     printf "🏊  argo-cd ingress install skipped\n"

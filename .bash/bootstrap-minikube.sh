@@ -41,13 +41,11 @@ printf 'minikube dashboard installing'
 
 helm repo remove kubernetes-dashboard 
 helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
-helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard -f ./ci-cd/charts/values.kubernetes-dashboard.yaml
-
-pushd "./ci-cd/charts"
-
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard -f ./ci-cd/charts/kubernetes-dashboard/values.yaml
+kubectl apply -f ./ci-cd/charts/kubernetes-dashboard/ingress.yaml
 
 login_token=$(kubectl -n kubernetes-dashboard create token default)
-printf "access token: $login_token"
 
-
-echo "$color_success! 🏊  Minikube bootstrap completed"
+printf "$color_success! 🏊  Minikube bootstrap completed"
+printf "$color_ınfo access token: $login_token"
+printf "$color_none use 'minikube tunnel' bash to enable local ingress"

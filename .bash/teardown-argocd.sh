@@ -10,4 +10,5 @@ set -o allexport; source .env; set +o allexport
 printf '🏊  argo-cd uninstall, started\n'
 
 kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl delete -n argocd -f 'ci-cd/charts/argo-cd/ingress.yaml'
 printf "🏊  argo-cd bootstrap, installed\n"
