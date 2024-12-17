@@ -2,6 +2,11 @@
 
 A standard style for README files
 
+## After repo is download follow step at below to ensure local workspace is ready 
+bash ./.bash/bootstrap-local-workspace.sh
+
+
+
 ## Install
 
 ```sh

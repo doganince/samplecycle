@@ -31,7 +31,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         sudo install minikube-linux-amd64 /usr/local/bin/minikube
     fi
 else
-    echo "Unsupported operatin system"
+    echo "Unsupported operating system"
     exit 1
 fi
 
