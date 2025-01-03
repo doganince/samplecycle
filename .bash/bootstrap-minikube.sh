@@ -49,6 +49,7 @@ helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
 helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard -f ./ci-cd/charts/kubernetes-dashboard/values.yaml
 kubectl apply -f ./ci-cd/charts/kubernetes-dashboard/ingress.yaml
 
+minikube tunnel
 login_token=$(kubectl -n kubernetes-dashboard create token default)
 
 printf "$color_success! 🏊  Minikube bootstrap completed"
