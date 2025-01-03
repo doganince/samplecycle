@@ -37,7 +37,12 @@ fi
 
 minikube start --cpus 6 --memory=4000 --addons=ingress
 
-printf 'minikube dashboard installing'
+while [[ $(minikube status --format='{{.Host}}') != "Running" ]]; do
+    echo "Waiting for Minikube to start..."
+    sleep 5
+done
+
+printf 'Minikube started successfully\n'
 
 helm repo remove kubernetes-dashboard 
 helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
