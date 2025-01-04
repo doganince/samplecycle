@@ -24,4 +24,4 @@ spec:
   tls:
     - hosts:
         - argocd.domain.com
-      secretName: argocd-secret
+      secretName: argocd-secret # pragma: allowlist-secret

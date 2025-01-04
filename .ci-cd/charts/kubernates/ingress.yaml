@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - kubernetes.dashboard.domain.com
-    secretName: dashboard-tls
+    secretName: dashboard-tls # pragma: allowlist-secret
   rules:
   - host: kubernetes.dashboard.domain.com
     http:

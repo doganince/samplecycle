@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 'ui-api'
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  destination:
+    name: ''
+    namespace: sample-cycle-local
+    server: https://kubernetes.default.svc
+  source:
+    path: charts/ui-api
+    repoURL: 'https://github.com/doganince/sample-cycle.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
