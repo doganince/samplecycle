@@ -1,0 +1,37 @@
+name: Create Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup .net core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: core-api >Restore dependencies
+        run: dotnet restore ./src/apps/core-api
+      - name: core-api >Build project
+        run: dotnet build ./src/apps/core-api/CoreAPI.sln --no-restore
+      - name: core-api >Run Tests
+        run: dotnet test ./src/apps/core-api/CoreAPI.sln --no-build --verbosity normal
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: core-api > Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./src/apps/core-api/Dockerfile
+          push: true
+          tags: ${{ vars.DOCKERHUB_REPOSITORY_NAMESPACE }}/core-api:${{ event.release.tag_name }}

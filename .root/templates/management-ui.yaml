@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 'ui-api'
+  name: 'core-api'
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -13,8 +13,8 @@ spec:
     namespace: sample-cycle-local
     server: https://kubernetes.default.svc
   source:
-    path: charts/ui-api
-    repoURL: 'https://github.com/doganince/sample-cycle.git'
+    path: src/charts/core-api
+    repoURL: 'https://github.com/doganince/samplecycle.git'
     targetRevision: HEAD
     helm:
       valueFiles:
