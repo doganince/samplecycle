@@ -1,3 +1,12 @@
+## [1.3.3](https://github.com/doganince/samplecycle/compare/v1.3.2...v1.3.3) (2025-01-04)
+
+
+### Bug Fixes
+
+* test ([27e951a](https://github.com/doganince/samplecycle/commit/27e951a987a1cfd1e71d54138a73038256f7cf41))
+* test file ([7c303ca](https://github.com/doganince/samplecycle/commit/7c303caf160303f34e14c246462b6779f6a8d24c))
+* test file ([0d09dcc](https://github.com/doganince/samplecycle/commit/0d09dccbbe46b09408b542471c0f138518fcc1ae))
+
 ## [1.3.2](https://github.com/doganince/samplecycle/compare/v1.3.1...v1.3.2) (2025-01-04)
 
 
