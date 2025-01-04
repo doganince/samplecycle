@@ -1,3 +1,11 @@
+## 🚀 Release v1.3.0
+
+
+
+### Features
+
+- release (2a1478f101e388ffda6e0189180edf73feae1282)
+
 ## 🚀 Release v1.2.0
 
 
