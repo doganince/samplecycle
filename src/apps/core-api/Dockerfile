@@ -7,10 +7,10 @@ ENV ASPNETCORE_URLS=http://+:1001
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["core-api/CoreAPI.csproj", "core-api/"]
-RUN dotnet restore "core-api/CoreAPI.csproj"
+COPY ["src/apps/core-api/CoreAPI.csproj", "src/apps/core-api/"]
+RUN dotnet restore "src/apps/core-api/CoreAPI.csproj"
 COPY . .
-WORKDIR "/src/core-api"
+WORKDIR "/src/src/apps/core-api"
 RUN dotnet build "CoreAPI.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
