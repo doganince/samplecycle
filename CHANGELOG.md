@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/doganince/samplecycle/compare/v1.3.4...v1.3.5) (2025-01-04)
+
+
+### Bug Fixes
+
+* tset ([341ef67](https://github.com/doganince/samplecycle/commit/341ef67bb0bbefb8f5d1896419c75b6849aaf0e1))
+
 ## [1.3.4](https://github.com/doganince/samplecycle/compare/v1.3.3...v1.3.4) (2025-01-04)
 
 
