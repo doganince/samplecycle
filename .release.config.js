@@ -21,10 +21,10 @@ module.exports = {
 
             if (typeEmojis[commit.type]) {
               commit.type = `${typeEmojis[commit.type]} ${commit.type}`;
-            } else {
-              commit.type = `${typeEmojis['fix']} fix`;
             }
             
+            console.log(commit)
+
             return commit;
           },
           groupBy: "type",
