@@ -22,6 +22,7 @@ module.exports = {
             if (typeEmojis[commit.type]) {
               commit.type = `${typeEmojis[commit.type]} ${commit.type}`;
             }
+            
             return commit;
           },
           groupBy: "type",
@@ -39,14 +40,6 @@ module.exports = {
 {{/each}}
 
 {{/each}}
-{{#if notes}}
-### ⚠️ Breaking Changes
-
-{{#each notes}}
-- {{this.title}}
-{{/each}}
-
-{{/if}}
 `
         }
       }
