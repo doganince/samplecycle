@@ -1,3 +1,17 @@
+## [1.3.2](https://github.com/doganince/samplecycle/compare/v1.3.1...v1.3.2) (2025-01-04)
+
+
+### Bug Fixes
+
+* change with angular present ([7904cb3](https://github.com/doganince/samplecycle/commit/7904cb3992f53361cc5b901595c229379c22e5a8))
+* package json ([c0561e8](https://github.com/doganince/samplecycle/commit/c0561e87986877a35a048ba89c38b0e80979a8a0))
+* package json ([c7624e9](https://github.com/doganince/samplecycle/commit/c7624e991979ec234792e72e272b53aeee53b1bb))
+* release ([4f2588b](https://github.com/doganince/samplecycle/commit/4f2588b0ce9d6f49e9956f9c3f852df9127d78b4))
+* semantic release ([85195aa](https://github.com/doganince/samplecycle/commit/85195aa6dc05ee6dd580f7837c9f87903fcb2045))
+* semantic release ([f658c0c](https://github.com/doganince/samplecycle/commit/f658c0c6a23de8b882be2748387b09d9ccc08fa3))
+* semantic ver ([56f0791](https://github.com/doganince/samplecycle/commit/56f0791853417310b527e908a769da4f4ece41f1))
+* workflow ([d041f38](https://github.com/doganince/samplecycle/commit/d041f3874f7c1190729ecbfd45337e507b451e04))
+
 ## 🚀 Release v1.3.1
 
 
