@@ -34,4 +34,4 @@ jobs:
           context: .
           file: ./src/apps/core-api/Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_REPOSITORY_NAMESPACE }}/core-api:${{ event.release.tag_name }}
+          tags: ${{ vars.DOCKERHUB_REPOSITORY_NAMESPACE }}/core-api:${{ github.event.release.tag_name }}
