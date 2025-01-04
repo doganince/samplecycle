@@ -1,39 +1,39 @@
 {
-  "branches": ["main"],
-  "plugins": [
-    "@semantic-release/commit-analyzer",
-    [
-      "@semantic-release/release-notes-generator",
-      {
-        "preset": "conventionalcommits",
-        "writerOpts": {
-          "headerPartial": "## 🚀 Release v{{version}}\n\n",
-          "mainTemplate": "{{> header}}\n\n{{#each commitGroups}}{{> commitGroup}}{{/each}}\n\n{{> footer}}",
-          "commitGroupsSort": "title",
-          "groupBy": "type",
-          "commitGroupSort": null,
-          "commitGroupTitle": {
-            "feat": "✨ Features",
-            "fix": "🐛 Bug Fixes",
-            "docs": "📚 Documentation",
-            "chore": "🔧 Maintenance",
-            "refactor": "🔨 Refactors",
-            "style": "🎨 Styling",
-            "test": "✅ Tests",
-            "perf": "⚡ Performance"
-          },
-          "commitPartial": "- {{#if scope}}**{{scope}}:** {{/if}}{{subject}} ({{hash}})\n"
-        }
-      }
-    ],
-    "@semantic-release/changelog",
-    [
-      "@semantic-release/git",
-      {
-        "assets": ["CHANGELOG.md", "package.json"],
-        "message": "chore(release): v${nextRelease.version}\n\n${nextRelease.notes}"
-      }
-    ],
-    "@semantic-release/github"
-  ]
+	"branches": ["main"],
+	"plugins": [
+		"@semantic-release/commit-analyzer",
+		"@semantic-release/release-notes-generator",
+		"@semantic-release/changelog",
+		"@semantic-release/npm",
+		"@semantic-release/github",
+		"@semantic-release/git"
+	],
+	"preset": "angular",
+	"releaseRules": [
+		{ "type": "feat", "release": "minor" },
+		{ "type": "fix", "release": "patch" },
+		{ "type": "perf", "release": "patch" },
+		{ "type": "docs", "release": "patch" },
+		{ "type": "style", "release": "patch" },
+		{ "type": "refactor", "release": "patch" },
+		{ "type": "test", "release": "patch" },
+		{ "type": "build", "release": "patch" },
+		{ "type": "ci", "release": "patch" },
+		{ "type": "chore", "release": "patch" }
+	],
+	"releaseNotes": {
+		"title": "Release Notes",
+		"sections": [
+			{ "title": "🚀 Features", "types": ["feat"] },
+			{ "title": "🐛 Bug Fixes", "types": ["fix"] },
+			{ "title": "📈 Performance Improvements", "types": ["perf"] },
+			{ "title": "📝 Documentation", "types": ["docs"] },
+			{ "title": "💄 Styles", "types": ["style"] },
+			{ "title": "♻️ Code Refactoring", "types": ["refactor"] },
+			{ "title": "✅ Tests", "types": ["test"] },
+			{ "title": "📦 Build System", "types": ["build"] },
+			{ "title": "🔧 Continuous Integration", "types": ["ci"] },
+			{ "title": "🔨 Chores", "types": ["chore"] }
+		]
+	}
 }
