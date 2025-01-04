@@ -1,3 +1,16 @@
+# 🚀 Release Notes
+
+## 🛠 fix
+
+- release
+- release
+- tes
+- test file
+
+## false
+
+-
+
 # 🚀 Changelog
 
 ## [1.3.8](https://github.com/doganince/samplecycle/compare/v1.3.7...v1.3.8) (2025-01-04)
