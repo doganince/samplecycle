@@ -1,16 +1,40 @@
 {
-  "branches": ["main"],
-  "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
-    "@semantic-release/changelog",
-    [
-      "@semantic-release/git",
-      {
-        "assets": ["CHANGELOG.md", "package.json"],
-        "message": "chore(release): 🔖 v${nextRelease.version}\n\n${nextRelease.notes}"
-      }
-    ],
-    "@semantic-release/github"
-  ]
-}
+	"branches": ["main"],
+	"plugins": [
+	  "@semantic-release/commit-analyzer",
+	  [
+		"@semantic-release/release-notes-generator",
+		{
+		  "preset": "conventionalcommits",
+		  "writerOpts": {
+			"headerPartial": "## 🚀 Release v{{version}}\n\n",
+			"mainTemplate": "{{> header}}\n\n{{#each commitGroups}}{{> commitGroup}}{{/each}}\n\n{{> footer}}",
+			"commitGroupsSort": "title",
+			"groupBy": "type",
+			"commitGroupSort": null,
+			"commitGroupTitle": {
+			  "feat": "✨ Features",
+			  "fix": "🐛 Bug Fixes",
+			  "docs": "📚 Documentation",
+			  "chore": "🔧 Maintenance",
+			  "refactor": "🔨 Refactors",
+			  "style": "🎨 Styling",
+			  "test": "✅ Tests",
+			  "perf": "⚡ Performance"
+			},
+			"commitPartial": "- {{#if scope}}**{{scope}}:** {{/if}}{{subject}} ({{hash}})\n"
+		  }
+		}
+	  ],
+	  "@semantic-release/changelog",
+	  [
+		"@semantic-release/git",
+		{
+		  "assets": ["CHANGELOG.md", "package.json"],
+		  "message": "chore(release): v${nextRelease.version}\n\n${nextRelease.notes}"
+		}
+	  ],
+	  "@semantic-release/github"
+	]
+  }
+  
