@@ -1,5 +1,13 @@
 # 🚀 Changelog
 
+## [1.3.8](https://github.com/doganince/samplecycle/compare/v1.3.7...v1.3.8) (2025-01-04)
+
+
+### Bug Fixes
+
+* release ([0ea1a2b](https://github.com/doganince/samplecycle/commit/0ea1a2b7559aecf7f35c474a8d8b2bf041720549))
+* semantic release ([90a8b05](https://github.com/doganince/samplecycle/commit/90a8b056ca3655d52a549bfce8925b5038651cc6))
+
 ## [1.3.7](https://github.com/doganince/samplecycle/compare/v1.3.6...v1.3.7) (2025-01-04)
 
 
