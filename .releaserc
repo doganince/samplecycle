@@ -1,12 +1,16 @@
 {
-	"branches": ["main", "next", "master"],
-	"plugins": [
-	  "@semantic-release/commit-analyzer",
-	  "@semantic-release/release-notes-generator",
-	  "@semantic-release/changelog",
-	  "@semantic-release/git"
-	],
-	"releaseNotes": {
-	  "generate": "New release: ${nextRelease.version}\n\nFeatures: :sparkles:\nFixes: :bug:\nChores: :wrench:\nDocs: :memo:\nStyles: :art:\nRefactors: :recycle:\nTests: :white_check_mark:\nBuilds: :package:\nCI: :construction_worker:\nPerformance: :zap:"
-	}
-  }
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["CHANGELOG.md", "package.json"],
+        "message": "chore(release): 🔖 v${nextRelease.version}\n\n${nextRelease.notes}"
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
