@@ -1,3 +1,9 @@
+### 🚀 Release Notes
+
+#### 🛠 fix
+
+- change release styles
+
 # 🚀 Release Notes
 
 ## 🛠 fix
