@@ -1,5 +1,123 @@
 ### 🚀 Release Notes
 
+#### ⚡️ perf
+
+- lorem Ipsum is simply dummy text of the printing and typesetting industry
+- test file
+
+#### ✅ test
+
+- test file
+
+#### ✨ feat
+
+- .releaserc file
+- fancy readme
+- readme and initial sh files
+- release
+- release
+- test file
+- test semantic version
+- update packages, add conventionalcommits pack
+
+#### 🔧 chore
+
+- 🔖 v1.1.0
+- 🔖 v1.1.1
+- 🔖 v1.3.10
+- 🔖 v1.3.11
+- 🔖 v1.3.12
+- 🔖 v1.3.13
+- 🔖 v1.3.14
+- 🔖 v1.3.6
+- 🔖 v1.3.7
+- 🔖 v1.3.8
+- 🔖 v1.3.9
+- 1.3.2 [skip ci]
+- 1.3.3 [skip ci]
+- 1.3.4 [skip ci]
+- 1.3.5 [skip ci]
+- v1.2.0
+- v1.3.0
+- v1.3.1
+
+#### 🛠 fix
+
+- change release styles
+- change with angular present
+- package json
+- package json
+- release
+- release
+- release
+- release
+- release
+- release
+- release
+- release
+- semantic release
+- semantic release
+- semantic release
+- semantic ver
+- tes
+- test
+- test
+- test 1
+- test 3
+- test file
+- test file
+- test file
+- test file
+- test file
+- test file
+- tset
+- tset file
+- workflow
+
+#### false
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+-
+
+### 🚀 Release Notes
+
 #### 🛠 fix
 
 - change release styles
