@@ -32,10 +32,10 @@ module.exports = {
           commitsSort: ["scope", "subject"],
           noteGroupsSort: "title",
           mainTemplate: `
-# 🚀 Release Notes
+### 🚀 Release Notes
 
 {{#each commitGroups}}
-## {{title}}
+#### {{title}}
 
 {{#each commits}}
 - {{this.subject}}
