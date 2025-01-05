@@ -1,4 +1,4 @@
-# 🚀 Sample Cycle
+# 🚉  Sample Cycle
 
 A standard style for README files
 
