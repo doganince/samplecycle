@@ -1,0 +1,4 @@
+apiVersion: v2
+name: sample-cycle-local
+type: application
+version: '143'
