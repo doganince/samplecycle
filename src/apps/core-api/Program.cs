@@ -40,7 +40,7 @@ app.MapGet("/health", () =>
 {
     return Results.Json(new { status = "healthy" });
 })
-.WithName("GetHealth")
+.WithName("Health")
 .WithOpenApi();
 
 app.Run();
