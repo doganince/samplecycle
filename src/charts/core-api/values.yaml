@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: doganince/core-api
   pullPolicy: IfNotPresent
-  tag: 'v1.1.1'
+  tag: 'v1.1.2'
 imageCredentials:
   name: dockerhubcredentials
   registry: https://index.docker.io/v1/
