@@ -1,5 +1,24 @@
 ### 🚀 Release Notes
 
+#### ✨ feat
+
+- health check
+
+#### 🎨 style
+
+- fancy readme
+
+#### false
+
+- 
+- 
+- 
+- 
+- 
+-
+
+### 🚀 Release Notes
+
 #### ⚡️ perf
 
 - lorem Ipsum is simply dummy text of the printing and typesetting industry
