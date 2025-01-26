@@ -3,9 +3,9 @@ image:
   repository: doganince/core-api
   pullPolicy: IfNotPresent
   tag: 'v1.0.5'
-# imageCredentials:
-#   name: dockerhubcredentials
-#   registry: https://index.docker.io/v1/
+imageCredentials:
+  name: dockerhubcredentials
+  registry: https://index.docker.io/v1/
 #   username: to-be-pass # pragma: allowlist-secret
 #   password: to-be-pass # pragma: allowlist-secret
 # imagePullSecrets:
