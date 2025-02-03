@@ -1,6 +1,6 @@
 version: 2
 updates:
-- package-ecosystem: ""
+- package-ecosystem: "npm, bundler, composer, devcontainers, dotnet-sdk, maven, mix, cargo, gradle, nuget, gomod, docker, elm, gitsubmodule, github-actions, pip, terraform, pub, swift"
   directory: "/"
   schedule:
     interval: "daily"
