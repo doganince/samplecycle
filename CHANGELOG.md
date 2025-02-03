@@ -2,6 +2,16 @@
 
 #### ✨ feat
 
+- add dependabot configuration for daily updates
+
+#### false
+
+-
+
+### 🚀 Release Notes
+
+#### ✨ feat
+
 - health check
 
 #### 🎨 style
