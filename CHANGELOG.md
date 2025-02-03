@@ -13,6 +13,16 @@
 #### ✨ feat
 
 - add dependabot configuration for daily updates
+
+#### false
+
+-
+
+### 🚀 Release Notes
+
+#### ✨ feat
+
+- add dependabot configuration for daily updates
 - add dependabot configuration for daily updates
 
 #### false
