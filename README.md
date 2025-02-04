@@ -1,5 +1,3 @@
-<a href="https://www.buymeacoffee.com/kurtcobain" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
 # 🚉  Sample Cycle
 
 A standard style for README files
@@ -120,4 +118,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or feedback, please feel free to reach out.
 
-Happy coding! 🚀
+<a href="https://www.buymeacoffee.com/dogan_ince" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
