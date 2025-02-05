@@ -1,5 +1,15 @@
 ### 🚀 Release Notes
 
+#### 🛠 fix
+
+- github issue templates moved into corect folder
+
+#### false
+
+-
+
+### 🚀 Release Notes
+
 #### ✨ feat
 
 - backlog template
