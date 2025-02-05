@@ -2,6 +2,17 @@
 
 #### ✨ feat
 
+- improvements on bootstraps and update readme
+
+#### false
+
+- 
+-
+
+### 🚀 Release Notes
+
+#### ✨ feat
+
 - add dependabot configuration for daily updates
 
 #### false
