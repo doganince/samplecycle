@@ -9,21 +9,21 @@ set -o allexport; source .env; set +o allexport
 
 printf 'argo cd bootstrap for apps, started\n'
 
-# kubectl port-forward svc/argocd-server -n argocd 8080:443 &
+# kubectl port-forward svc/argocd-server -n argocd 8080:443 &
 
 login_password=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 
-argocd login localhost:8080 --username="admin" --password="${login_password}" --insecure
+argocd login argocd.domain.com:443 --username="admin" --password="${login_password}" --insecure
 printf "🏊  argo-cd bootstrap, login is successful\n"
 
-argocd repo add $GITHUB_REPO_URL --username $GITHUB_USERNAME_ARGO_CD --password $GITHUB_TOKEN_ARGO_CD --name git-sample-cycle --upsert 
+argocd repo add $GITHUB_REPO_URL --username $REPOSITORY_USERNAME --password $REPOSITORY_TOKEN_ARGO_CD --name git-sample-cycle --upsert 
 printf "${color_success}root app added to argo cd ${color_none}\n"
 
 argocd app create apps \
   --dest-namespace argocd \
   --dest-server $KUBERNATES_SERVICE_URL \
   --repo $GITHUB_REPO_URL \
-  --path .cd/root \
+  --path src/charts/root \
   --insecure \
   --upsert 
   --async &
@@ -31,7 +31,7 @@ argocd app create apps \
 printf "${color_success}app created successful ${color_none}\n"
 
 printf "${color_info}apps sync started ${color_none}\n"
-argocd app sync apps --server=localhost:8080 --insecure &
+argocd app sync apps --server=argocd.domain.com:443 --insecure &
 printf "${color_success}triggered sync apps ${color_none}\n"
 
 minikube tunnel

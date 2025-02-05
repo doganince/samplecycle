@@ -1,4 +1,4 @@
-# 🚉  Sample Cycle
+# 🚀 Sample Cycle
 
 A standard style for README files
 
@@ -99,8 +99,9 @@ bash ./.bash/bootstrap-monitoring.sh
 Add the following entries to your `/etc/hosts` file for local DNS resolution:
 
 ```sh
-127.0.0.1    kubernetes.dashboard.domain.com
-127.0.0.1    argocd.domain.com
+127.0.0.1	kubernetes.dashboard.domain.com
+127.0.0.1	argocd.domain.com
+127.0.0.1	core-api.domain.com
 ```
 
 ## 📄 License
@@ -117,5 +118,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 If you have any questions or feedback, please feel free to reach out.
+
+## 🚀 Planned Features
+
+Here are some features that are planned for the near future:
+
+- Add Trivy scan for all Docker images to ensure security compliance.
+- Enhance CI/CD pipeline with additional testing stages.
+- Integrate monitoring and alerting using Prometheus and Grafana.
 
 <a href="https://www.buymeacoffee.com/dogan_ince" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
