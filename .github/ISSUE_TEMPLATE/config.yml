@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🚀 Feature Request
+    url: https://github.com/org/repo/discussions
+    about: test 2
+  - name: ❓ Support Questions
+    url: https://github.com/org/repo/discussions
+    about: test 1 
