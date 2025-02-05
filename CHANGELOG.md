@@ -2,6 +2,12 @@
 
 #### ✨ feat
 
+- Update issue templates
+
+### 🚀 Release Notes
+
+#### ✨ feat
+
 - drop md
 
 #### false
