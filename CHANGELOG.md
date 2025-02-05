@@ -2,6 +2,16 @@
 
 #### ✨ feat
 
+- backlog template
+
+#### false
+
+-
+
+### 🚀 Release Notes
+
+#### ✨ feat
+
 - improvements on bootstraps and update readme
 
 #### false
