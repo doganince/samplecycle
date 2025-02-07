@@ -4,48 +4,48 @@ on:
   workflow_dispatch:
     inputs:
       runTest:
-        description: "run tests ?"
+        description: "run tests?"
         required: true
         type: boolean
         default: true
       createRelease:
-        description: "create new release ?"
+        description: "create new release?"
         required: true
         type: boolean
         default: true
       publishImage:
-        description: "publish docker image ?"
+        description: "publish docker image?"
         required: true
         type: boolean
         default: true
 
 jobs:
-  trigger-tests:
+  run-tests:
     if: ${{ github.event.inputs.runTest == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: tests running
         run: echo "Triggering Workflow 1"
 
-  trigger-lint:
+  run-lint:
     if: ${{ github.event.inputs.runTest == 'true' }}
-    needs: trigger-tests
+    needs: run-tests
     runs-on: ubuntu-latest
     steps:
       - name: tests running
         run: echo "Triggering Workflow 1"
        
-  trigger-release:
+  run-release:
     if: ${{ github.event.inputs.createRelease == 'true' }}
-    needs: [trigger-tests, trigger-lint]
+    needs: [run-tests, run-lint]
     runs-on: ubuntu-latest
     steps:
       - name: release creating
         run: echo "Triggering Workflow 2"
        
-  trigger-workflow3:
+  run-workflow3:
     if: ${{ github.event.inputs.publishImage == 'true' }}
-    needs: [trigger-release, trigger-lint]
+    needs: [run-release, run-lint]
     runs-on: ubuntu-latest
     steps:
       - name: publishing docker images
