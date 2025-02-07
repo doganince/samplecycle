@@ -29,11 +29,10 @@ jobs:
         run: echo "Triggering Workflow 2"
        
   trigger-workflow3:
-    if: ${{ github.event.inputs.run_workflow1 == 'true' && (github.event.inputs.run_workflow2 == 'true' || github.event.inputs.run_workflow2 == 'false') }}
-    needs: [trigger-workflow1, trigger-workflow2]
+    if: ${{ github.event.inputs.run_workflow1 == 'true' }}
+    needs: trigger-workflow1
     runs-on: ubuntu-latest
     steps:
       - name: Log Trigger Workflow 3
-        if: ${{ needs.trigger-workflow1.result == 'success' && (needs.trigger-workflow2.result == 'success' || needs.trigger-workflow2.result == 'skipped') }}
         run: echo "Triggering Workflow 3"
-       
+      
