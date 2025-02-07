@@ -49,7 +49,7 @@ jobs:
         run: echo "Triggering Workflow 1"
        
   run-release:
-    if: ${{ github.event.inputs.createRelease == 'true' }}
+    if: ${{ github.event.inputs.createRelease == 'true' && (github.event.inputs.bumpVersion == 'false' || needs.bump-version.result == 'success' ) }}
     needs: [run-tests, run-lint]
     runs-on: ubuntu-latest
     steps:
