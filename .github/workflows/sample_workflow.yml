@@ -3,36 +3,48 @@ name: Multi Workflow Dispatcher
 on:
   workflow_dispatch:
     inputs:
-      run_workflow1:
-        description: "Run Workflow 1?"
+      runTest:
+        description: "run tests"
         required: true
         type: boolean
-      run_workflow2:
-        description: "Run Workflow 2?"
+      createRelease:
+        description: "create new release"
+        required: true
+        type: boolean
+      publishImage:
+        description: "publish Docker Image"
         required: true
         type: boolean
 
 jobs:
-  trigger-workflow1:
-    if: ${{ github.event.inputs.run_workflow1 == 'true' }}
+  trigger-tests:
+    if: ${{ github.event.inputs.runTest == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Log Trigger Workflow 1
+      - name: tests running
+        run: echo "Triggering Workflow 1"
+
+  trigger-lint:
+    if: ${{ github.event.inputs.runTest == 'true' }}
+    needs: trigger-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: tests running
         run: echo "Triggering Workflow 1"
        
-  trigger-workflow2:
-    if: ${{ github.event.inputs.run_workflow2 == 'true' }}
-    needs: trigger-workflow1
+  trigger-release:
+    if: ${{ github.event.inputs.createRelease == 'true' }}
+    needs: [trigger-tests, trigger-lint]
     runs-on: ubuntu-latest
     steps:
-      - name: Log Trigger Workflow 2
+      - name: release creating
         run: echo "Triggering Workflow 2"
        
   trigger-workflow3:
-    if: ${{ github.event.inputs.run_workflow1 == 'true' }}
-    needs: trigger-workflow1
+    if: ${{ github.event.inputs.publishImage == 'true' }}
+    needs: [trigger-release, trigger-lint]
     runs-on: ubuntu-latest
     steps:
-      - name: Log Trigger Workflow 3
+      - name: publishing docker images
         run: echo "Triggering Workflow 3"
       
