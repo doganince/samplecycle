@@ -17,38 +17,34 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: tests running
-        run: echo "Triggering Workflow 1"
+      - name: tests started
+        run: echo "job started with name:run test"
+      - name: tests completed
+        run: echo "job completed with name:run test"
 
   bump-version:
-    if: ${{ github.event.inputs.environment == 'production' || github.event.inputs.environment == 'staging' }}
     needs: run-tests
     runs-on: ubuntu-latest
     steps:
-      - name: tests running
-        run: echo "Triggering Workflow 1"
+      - name: tests started
+        run: echo "job started with name:bump-version"
+      - name: tests completed
+        run: echo "job started with name:bump-completed"
 
   run-lint:
-    if: ${{ github.event.inputs.environment == 'production' || github.event.inputs.environment == 'staging' }}
-    needs: run-tests
+    needs: bump-version
     runs-on: ubuntu-latest
     steps:
-      - name: tests running
-        run: echo "Triggering Workflow 1"
+      - name: tests started
+        run: echo "job started with name:run-lint"
+      - name: tests completed
+        run: echo "job completed with name:run-lint"
        
   run-release:
-    if: ${{ github.event.inputs.environment != 'development' }}
-    needs: [run-tests, run-lint]
+    needs: run-lint
     runs-on: ubuntu-latest
     steps:
-      - name: release creating
-        run: echo "Triggering Workflow 2"
-       
-  # run-publish artifactory:
-  #   if: ${{ github.event.inputs.publishImage == 'true' }}
-  #   needs: [run-release, run-lint]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: publishing docker images
-  #       run: echo "Triggering Workflow 3"
-      
+      - name: tests started
+        run: echo "job started with name:run-release"
+      - name: tests completed
+        run: echo "job completed with name:run-release"
