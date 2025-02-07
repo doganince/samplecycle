@@ -4,21 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       runTest:
-        description: "run tests"
+        description: "run tests ?"
         required: true
         type: boolean
         default: true
       createRelease:
-        description: "create new release"
+        description: "create new release ?"
         required: true
         type: boolean
         default: true
       publishImage:
-        description: "publish Docker Image"
+        description: "publish docker image ?"
         required: true
         type: boolean
         default: true
-        
+
 jobs:
   trigger-tests:
     if: ${{ github.event.inputs.runTest == 'true' }}
