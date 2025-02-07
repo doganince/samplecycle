@@ -3,37 +3,25 @@ name: Multi Workflow Dispatcher
 on:
   workflow_dispatch:
     inputs:
-      runTest:
-        description: "run tests?"
+      environment:
+        description: "Select deployment environment"
         required: true
-        type: boolean
-        default: true
-      createRelease:
-        description: "create new release?"
-        required: true
-        type: boolean
-        default: true
-      bumpVersion:
-        description: "bump version?"
-        required: true
-        type: boolean
-        default: true
-      publishImage:
-        description: "publish docker image?"
-        required: true
-        type: boolean
-        default: true
+        default: "staging"
+        type: choice
+        options:
+          - production
+          - staging
+          - development
 
 jobs:
   run-tests:
-    if: ${{ github.event.inputs.runTest == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: tests running
         run: echo "Triggering Workflow 1"
 
   bump-version:
-    if: ${{ github.event.inputs.bumpVersion == 'true' }}
+    if: ${{ github.event.inputs.environment == 'production' || github.event.inputs.environment == 'staging' }}
     needs: run-tests
     runs-on: ubuntu-latest
     steps:
@@ -41,7 +29,7 @@ jobs:
         run: echo "Triggering Workflow 1"
 
   run-lint:
-    if: ${{ github.event.inputs.runTest == 'true' }}
+    if: ${{ github.event.inputs.environment == 'production' || github.event.inputs.environment == 'staging' }}
     needs: run-tests
     runs-on: ubuntu-latest
     steps:
@@ -49,7 +37,7 @@ jobs:
         run: echo "Triggering Workflow 1"
        
   run-release:
-    if: ${{ github.event.inputs.createRelease == 'true' && (github.event.inputs.bumpVersion == 'false' || needs.bump-version.result == 'success' ) }}
+    if: ${{ github.event.inputs.environment != 'development' }}
     needs: [run-tests, run-lint]
     runs-on: ubuntu-latest
     steps:
