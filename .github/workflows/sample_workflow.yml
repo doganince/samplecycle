@@ -29,7 +29,7 @@ jobs:
         run: echo "Triggering Workflow 2"
        
   trigger-workflow3:
-    if: ${{ github.event.inputs.run_workflow1 == 'true' }}
+    if: ${{ github.event.inputs.run_workflow1 == 'true' && (github.event.inputs.run_workflow2 == 'true' || github.event.inputs.run_workflow2 == 'false') }}
     needs: [trigger-workflow1, trigger-workflow2]
     runs-on: ubuntu-latest
     steps:
