@@ -7,15 +7,18 @@ on:
         description: "run tests"
         required: true
         type: boolean
+        default: true
       createRelease:
         description: "create new release"
         required: true
         type: boolean
+        default: true
       publishImage:
         description: "publish Docker Image"
         required: true
         type: boolean
-
+        default: true
+        
 jobs:
   trigger-tests:
     if: ${{ github.event.inputs.runTest == 'true' }}
