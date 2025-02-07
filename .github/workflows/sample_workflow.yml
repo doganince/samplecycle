@@ -26,6 +26,7 @@ jobs:
 
   trigger-workflow2:
     if: ${{ github.event.inputs.run_workflow2 == 'true' }}
+    needs: trigger-workflow1
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Workflow 2
