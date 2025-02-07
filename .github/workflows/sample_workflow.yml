@@ -13,6 +13,11 @@ on:
         required: true
         type: boolean
         default: true
+      bumpVersion:
+        description: "bump version?"
+        required: true
+        type: boolean
+        default: true
       publishImage:
         description: "publish docker image?"
         required: true
@@ -22,6 +27,14 @@ on:
 jobs:
   run-tests:
     if: ${{ github.event.inputs.runTest == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: tests running
+        run: echo "Triggering Workflow 1"
+
+  bump-version:
+    if: ${{ github.event.inputs.bumpVersion == 'true' }}
+    needs: run-tests
     runs-on: ubuntu-latest
     steps:
       - name: tests running
@@ -43,11 +56,11 @@ jobs:
       - name: release creating
         run: echo "Triggering Workflow 2"
        
-  run-workflow3:
-    if: ${{ github.event.inputs.publishImage == 'true' }}
-    needs: [run-release, run-lint]
-    runs-on: ubuntu-latest
-    steps:
-      - name: publishing docker images
-        run: echo "Triggering Workflow 3"
+  # run-publish artifactory:
+  #   if: ${{ github.event.inputs.publishImage == 'true' }}
+  #   needs: [run-release, run-lint]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: publishing docker images
+  #       run: echo "Triggering Workflow 3"
       
