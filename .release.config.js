@@ -1,5 +1,7 @@
 module.exports = {
-  branches: ["main"],
+  branches: [
+    { name: "main" }
+  ],
   plugins: [
     "@semantic-release/commit-analyzer",
     "@semantic-release/changelog",
@@ -7,52 +9,33 @@ module.exports = {
       "@semantic-release/release-notes-generator",
       {
         writerOpts: {
-          transform: (commit, context) => {
-            const typeEmojis = {
-              feat: "✨",
-              fix: "🛠",
-              docs: "📝",
-              style: "🎨",
-              refactor: "♻️",
-              perf: "⚡️",
-              test: "✅",
-              chore: "🔧"
-            };
-
-            if (typeEmojis[commit.type]) {
-              commit.type = `${typeEmojis[commit.type]} ${commit.type}`;
-            }
-            
-            console.log(commit)
-
-            return commit;
-          },
           groupBy: "type",
           commitGroupsSort: "title",
           commitsSort: ["scope", "subject"],
           noteGroupsSort: "title",
-          mainTemplate: `
-### 🚀 Release Notes
-
-{{#each commitGroups}}
-#### {{title}}
-
-{{#each commits}}
-- {{this.subject}}
-{{/each}}
-
-{{/each}}
-`
+          commitGroupsTitle: (group) => {
+            const typeEmojis = {
+              feat: "✨ Features",
+              fix: "🛠 Bug Fixes",
+              docs: "📝 Documentation",
+              style: "🎨 Code Style",
+              refactor: "♻️ Refactoring",
+              perf: "⚡️ Performance Improvements",
+              test: "✅ Tests",
+              chore: "🔧 Chores"
+            };
+            return typeEmojis[group.title] || "❓ Other";
+          },
+          transform: (commit, context) => {
+            const hash = commit.hash ? ` ([${commit.hash.substring(0, 7)}](https://github.com/${context.repository}/commit/${commit.hash}))` : "";
+            return `- ${commit.subject}${hash}`;
+          },
+          headerPartial: "# 🍕 Release Notes\n\n"
         }
       }
     ],
-    [
-      "@semantic-release/git",
-      {
-        assets: ["CHANGELOG.md", "package.json"],
-        message: "chore(release): 🔖 v${nextRelease.version}\n\n${nextRelease.notes}"
-      }
-    ],
-    "@semantic-release/github"
+    ["@semantic-release/github", {
+      "draft": true
+    }]
   ]
 };
