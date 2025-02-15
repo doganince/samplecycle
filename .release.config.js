@@ -22,13 +22,29 @@ module.exports = {
               refactor: "♻️ Refactoring",
               perf: "⚡️ Performance Improvements",
               test: "✅ Tests",
-              chore: "🔧 Chores"
+              chore: "🔧 Chores",
+              null: "❓ Other"
             };
             return typeEmojis[group.title] || "❓ Other";
           },
           transform: (commit, context) => {
-            const hash = commit.hash ? ` ([${commit.hash.substring(0, 7)}](https://github.com/${context.repository}/commit/${commit.hash}))` : "";
-            return `- ${commit.subject}${hash}`;
+            const typeEmojis = {
+              feat: "✨",
+              fix: "🛠",
+              docs: "📝",
+              style: "🎨",
+              refactor: "♻️",
+              perf: "⚡️",
+              test: "✅",
+              chore: "🔧"
+            };
+      
+            commit.type = commit.type || null;
+            commit.groupTitle = typeEmojis[commit.type] || "❓";
+            commit.shortHash = commit.hash ? commit.hash.substring(0, 7) : "";
+            commit.subject = commit.subject || "";
+      
+            return commit;
           },
           headerPartial: "# 🍕 Release Notes\n\n"
         }
