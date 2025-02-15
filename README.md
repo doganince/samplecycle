@@ -82,18 +82,6 @@ helm uninstall my-test-app-release
 helm upgrade --install my-test-app-release . --namespace=local --debug --dry-run
 ```
 
-## 🌟 Happy Path
-
-Follow these steps for a smooth setup:
-
-```sh
-# Bootstrap Kubernetes
-bash ./.bash/bootstrap-kubernates.sh
-
-# Bootstrap Monitoring
-bash ./.bash/bootstrap-monitoring.sh
-```
-
 ## 🌐 Local DNS Configuration
 
 Add the following entries to your `/etc/hosts` file for local DNS resolution:
@@ -110,14 +98,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgements
 
-- [ArgoCD](https://argoproj.github.io/argo-cd/)
-- [Minikube](https://minikube.sigs.k8s.io/docs/)
-- [Helm](https://helm.sh/)
-- [Terraform](https://www.terraform.io/)
-
-## 📞 Contact
-
-If you have any questions or feedback, please feel free to reach out.
+### [DRY-RUN-SEMANTIC] 
+```sh
+bash dotenv -e .env -- npx semantic-release --extends ./.release.config.js --debug --branches main --generate-notes
+```
 
 ## 🚀 Planned Features
 

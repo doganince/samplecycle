@@ -1,0 +1,109 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "select environment"
+        required: true
+        default: "development"
+        type: choice
+        options:
+          - production
+          - staging
+          - development
+      tag:
+        description: "put release tag"
+        required: true
+        type: string
+
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: lint started
+        run: echo "::warning::job not implemented yet"
+  
+  run-compile-and-tests:
+    runs-on: ubuntu-latest
+    needs: run-lint
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies - CoreAPI
+        run: dotnet restore ./src/apps/core-api
+      - name: Build project - CoreAPI
+        run: dotnet build ./src/apps/core-api/CoreAPI.csproj --no-restore
+      - name: Run tests - CoreAPI
+        run: dotnet test ./src/apps/core-api/CoreAPI.csproj --no-build --verbosity normal
+        
+  bump-version:
+    needs: run-compile-and-tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Dependencies
+      run: npm install 
+
+    - name: Run Semantic Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npx semantic-release --extends ./.release.config.js
+
+  release:
+    needs: [bump-version]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update Image Version in the root chart
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          token: ${{ secrets.AUTO_VERSION_TOKEN }}
+          value: ${{ github.run_number }}
+          masterBranchName: main
+          branch: deployment/${{ github.run_number }}
+          targetBranch: main
+          repository: "${{github.repository}}"
+          format: YAML
+          createPR: true
+          message: "update image version to ${{ github.run_number }}"
+          title: "deploy with version ${{ github.run_number }}"
+          labels: deploy
+          description: "## :cactus: deployment\n
+            > **id:** ${{ github.run_number }}\n
+            > **description:** update image version to ${{ github.run_number }}"
+          changes: |
+            {
+              ".cd/root/Chart.yaml": {
+                "version": "${{ github.run_number }}"
+              }
+            }
+
+  publish-to-artifactory:
+    runs-on: ubuntu-latest
+    needs: bump-version
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image - CoreAPI
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./src/apps/core-api/Dockerfile
+          push: true
+          tags: ${{ vars.DOCKERHUB_REPOSITORY_NAMESPACE }}/core-api:${{ github.event.release.tag_name }}
