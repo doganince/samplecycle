@@ -110,5 +110,3 @@ Here are some features that are planned for the near future:
 - Add Trivy scan for all Docker images to ensure security compliance.
 - Enhance CI/CD pipeline with additional testing stages.
 - Integrate monitoring and alerting using Prometheus and Grafana.
-
-<a href="https://www.buymeacoffee.com/dogan_ince" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
